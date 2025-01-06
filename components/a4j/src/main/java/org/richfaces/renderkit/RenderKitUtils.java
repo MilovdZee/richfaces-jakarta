@@ -59,11 +59,11 @@ public final class RenderKitUtils {
     /**
      *
      */
-    static final String BEHAVIOR_SOURCE_ID = "javax.faces.source";
+    static final String BEHAVIOR_SOURCE_ID = "jakarta.faces.source";
     /**
      *
      */
-    static final String BEHAVIOR_EVENT_NAME = "javax.faces.behavior.event";
+    static final String BEHAVIOR_EVENT_NAME = "jakarta.faces.behavior.event";
     /**
      *
      */

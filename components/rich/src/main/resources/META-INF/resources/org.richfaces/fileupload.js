@@ -436,24 +436,24 @@
 
 			var formData = new FormData(),
 				fileName = this.model.file.name,
-				viewState = this.fileUpload.form.find("input[name='javax.faces.ViewState']").val();
+				viewState = this.fileUpload.form.find("input[name='jakarta.faces.ViewState']").val();
 
 			formData.append(this.fileUpload.form[0].id, this.fileUpload.form[0].id);
-			formData.append("javax.faces.ViewState", viewState);
+			formData.append("jakarta.faces.ViewState", viewState);
 			formData.append(this.fileUpload.id, this.model.file);
 
 			var originalAction = this.fileUpload.form.attr("action"),
 				delimiter = originalAction.indexOf("?") == -1 ? "?" : "&",
 				encodedId = encodeURIComponent(this.fileUpload.id),
 				newAction = originalAction + delimiter + UID + "=" + this.uid +
-					"&javax.faces.partial.ajax=true" +
-					"&javax.faces.source=" + encodedId +
-					"&javax.faces.partial.execute=" + encodedId +
+					"&jakarta.faces.partial.ajax=true" +
+					"&jakarta.faces.source=" + encodedId +
+					"&jakarta.faces.partial.execute=" + encodedId +
 					"&org.richfaces.ajax.component=" + encodedId +
-					"&javax.faces.ViewState=" + encodeURIComponent(viewState);
+					"&jakarta.faces.ViewState=" + encodeURIComponent(viewState);
 
 			if (jsf.getClientWindow && jsf.getClientWindow()) {
-				newAction += "&javax.faces.ClientWindow=" + encodeURIComponent(jsf.getClientWindow());
+				newAction += "&jakarta.faces.ClientWindow=" + encodeURIComponent(jsf.getClientWindow());
 			};
 
 			var eventHandler = function(handlerCode) {
