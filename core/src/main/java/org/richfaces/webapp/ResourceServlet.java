@@ -32,6 +32,7 @@ import jakarta.servlet.ServletResponse;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
+import org.apache.myfaces.webapp.DelegatedFacesServlet;
 import org.richfaces.log.Logger;
 import org.richfaces.log.RichfacesLogger;
 import org.richfaces.resource.ResourceHandlerImpl;
@@ -53,7 +54,7 @@ import org.richfaces.resource.ResourceHandlerImpl;
  * For security reasons, the servlet handles just requests for JSF resources (context path starting with /jakarta.faces.resource/).
  * </p>
  */
-public class ResourceServlet implements Servlet {
+public class ResourceServlet implements Servlet, DelegatedFacesServlet {
 
     private static final Logger LOGGER = RichfacesLogger.RESOURCE.getLogger();
 
@@ -189,7 +190,7 @@ public class ResourceServlet implements Servlet {
             return null;
         }
 
-        if (servletPath.length() == 0) {
+        if (servletPath.isEmpty()) {
             return "/";
         }
 
