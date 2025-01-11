@@ -38,7 +38,7 @@ import org.richfaces.renderkit.util.HandlersChain;
  * @version $Revision: 1.1.2.3 $ $Date: 2007/02/12 17:46:53 $
  *
  */
-@ResourceDependencies({ @ResourceDependency(library = "jakarta.faces", name = "jsf.js"),
+@ResourceDependencies({ @ResourceDependency(library = "jakarta.faces", name = "faces.js"),
         @ResourceDependency(library = "org.richfaces", name = "jquery.js"),
         @ResourceDependency(library = "org.richfaces", name = "richfaces.js"),
         @ResourceDependency(library = "org.richfaces", name = "richfaces-queue.reslib") })

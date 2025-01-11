@@ -118,9 +118,9 @@ if (typeof jsf != 'undefined') {
                 error: jsfAjaxLogAdapter
             });
 
-        jsf.ajax.addOnEvent(eventsListener);
-        jsf.ajax.addOnError(eventsListener);
+        faces.ajax.addOnEvent(eventsListener);
+        faces.ajax.addOnError(eventsListener);
         //
-    }(RichFaces.jQuery, RichFaces, jsf));
+    }(RichFaces.jQuery, RichFaces, faces));
 }
 ;

@@ -101,7 +101,7 @@ public class ResourceLibraryTest {
         String uri;
 
         uri = nextUri(itr);
-        assertTrue(uri.contains("jsf.js"));
+        assertTrue(uri.contains("faces.js"));
         assertTrue(uri.contains("jakarta.faces"));
 
         uri = nextUri(itr);
