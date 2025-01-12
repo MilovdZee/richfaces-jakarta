@@ -292,7 +292,7 @@ public final class RenderKitUtils {
         }
 
         if (isChained) {
-            result.insert(0, "return jsf.util.chain(this, event, ");
+            result.insert(0, "return faces.util.chain(this, event, ");
             result.append(")");
         }
 
