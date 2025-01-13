@@ -82,7 +82,7 @@
         if (!thisFunction.initialized) {
             thisFunction.initialized = true;
 
-            var jsfEventsListener = rf.createJSFEventsAdapter({
+            var facesEventsListener = rf.createFacesEventsAdapter({
                     begin: function(event) {
                         statusAjaxEventHandler(event, 'start');
                     },
@@ -97,9 +97,9 @@
                     }
                 });
 
-            faces.ajax.addOnEvent(jsfEventsListener);
+            faces.ajax.addOnEvent(facesEventsListener);
             //TODO blocks default alert error handler
-            faces.ajax.addOnError(jsfEventsListener);
+            faces.ajax.addOnError(facesEventsListener);
         }
     };
 

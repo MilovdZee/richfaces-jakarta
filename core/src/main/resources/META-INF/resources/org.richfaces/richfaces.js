@@ -53,9 +53,9 @@ RichFaces.jQuery = RichFaces.jQuery || window.jQuery;
         DEL: 46
     };
 
-    if (window.jsf) {
-        var jsfAjaxRequest = faces.ajax.request;
-        var jsfAjaxResponse = faces.ajax.response;
+    if (window.faces) {
+        var facesAjaxRequest = faces.ajax.request;
+        var facesAjaxResponse = faces.ajax.response;
     }
 
     // get DOM element by id or DOM element or jQuery object
@@ -399,7 +399,7 @@ RichFaces.jQuery = RichFaces.jQuery || window.jQuery;
     };
     //
 
-    var jsfEventsAdapterEventNames = {
+    var facesEventsAdapterEventNames = {
         event: {
             'begin': ['begin'],
             'complete': ['beforedomupdate'],
@@ -436,7 +436,7 @@ RichFaces.jQuery = RichFaces.jQuery || window.jQuery;
         return rf.parseJSON(dataString);
     };
 
-    rf.createJSFEventsAdapter = function(handlers) {
+    rf.createFacesEventsAdapter = function(handlers) {
         //hash of handlers
         //supported are:
         // - begin
@@ -463,7 +463,7 @@ RichFaces.jQuery = RichFaces.jQuery || window.jQuery;
                 return;
             }
 
-            var typeHandlers = jsfEventsAdapterEventNames[type];
+            var typeHandlers = facesEventsAdapterEventNames[type];
             var handlerNames = (typeHandlers || {})[status] || typeHandlers;
 
             if (handlerNames) {
@@ -646,7 +646,7 @@ RichFaces.jQuery = RichFaces.jQuery || window.jQuery;
         faces.ajax.request(source, event, parameters);
     };
 
-    if (window.jsf) {
+    if (window.faces) {
         faces.ajax.request = function request(source, event, options) {
 
             // build parameters, taking options.rfExt into consideration
@@ -703,7 +703,7 @@ RichFaces.jQuery = RichFaces.jQuery || window.jQuery;
             }
 
             if (eventHandlers) {
-                var eventsAdapter = rf.createJSFEventsAdapter(eventHandlers);
+                var eventsAdapter = rf.createFacesEventsAdapter(eventHandlers);
                 parameters['onevent'] = chain(options.onevent, eventsAdapter);
                 parameters['onerror'] = chain(options.onerror, eventsAdapter);
             }
@@ -713,7 +713,7 @@ RichFaces.jQuery = RichFaces.jQuery || window.jQuery;
                 $(form).trigger('ajaxsubmit');
             }
 
-            return jsfAjaxRequest(source, event, parameters);
+            return facesAjaxRequest(source, event, parameters);
         };
 
         faces.ajax.response = function(request, context) {
@@ -739,7 +739,7 @@ RichFaces.jQuery = RichFaces.jQuery || window.jQuery;
                     }   
                 }
             }
-            return jsfAjaxResponse(request, context);
+            return facesAjaxResponse(request, context);
         };
     }
 
@@ -751,7 +751,7 @@ RichFaces.jQuery = RichFaces.jQuery || window.jQuery;
         if (sourceElement.id && !isRichFacesComponent(sourceElement)) {
             var parentElement = false;
             $(sourceElement).parents().each(function() {
-                if (isPrefixMatchingId(this.id, sourceElement.id)) { // otherwise parent element is definitely not JSF component
+                if (isPrefixMatchingId(this.id, sourceElement.id)) { // otherwise parent element is definitely not FACES component
                     var suffix = sourceElement.id.substring(this.id.length + 1); // extract suffix
                     if (suffix.match(/^[a-zA-Z]*$/) && isRichFacesComponent(this)) {
                         parentElement = this;
@@ -771,7 +771,7 @@ RichFaces.jQuery = RichFaces.jQuery || window.jQuery;
             return false;
         }
 
-        if (faces.separatorchar) { // only in JSF 2.2+
+        if (faces.separatorchar) { // only in FACES 2.2+
             return id[prefix.length] == faces.separatorchar;
         } else { 
             // only alphanumeric characters (and '-' and '_') are allowed in id
@@ -839,7 +839,7 @@ RichFaces.jQuery = RichFaces.jQuery || window.jQuery;
 
     var attachAjaxDOMCleaner = function() {
         // move this code to somewhere
-        if (typeof jsf != 'undefined' && faces.ajax) {
+        if (typeof faces != 'undefined' && faces.ajax) {
             faces.ajax.addOnEvent(ajaxOnComplete);
 
             return true;

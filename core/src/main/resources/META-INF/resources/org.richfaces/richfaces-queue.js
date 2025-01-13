@@ -24,7 +24,7 @@
  * @author Pavel Yaschenko
  */
 
-(function($, rf, jsf) {
+(function($, rf, faces) {
 
     /**
      * RichFaces Ajax container
@@ -35,21 +35,21 @@
      * */
     rf.ajaxContainer = rf.ajaxContainer || {};
 
-    if (rf.ajaxContainer.jsfRequest) {
+    if (rf.ajaxContainer.facesRequest) {
         return;
     }
 
     /**
-     * JSF 2.0 original method that sends an asynchronous ajax request to the server
+     * FACES 2.0 original method that sends an asynchronous ajax request to the server
      * see faces.ajax.request method for parameter's description
      * @function
-     * @name RichFaces.ajaxContainer.jsfRequest
+     * @name RichFaces.ajaxContainer.facesRequest
      *
      * */
-    rf.ajaxContainer.jsfRequest = faces.ajax.request;
+    rf.ajaxContainer.facesRequest = faces.ajax.request;
 
     /**
-     * RichFaces wrapper function of JSF 2.0 original method faces.ajax.request
+     * RichFaces wrapper function of FACES 2.0 original method faces.ajax.request
      * @function
      * @name faces.ajax.request
      *
@@ -61,7 +61,7 @@
         rf.queue.push(source, event, options);
     };
 
-    rf.ajaxContainer.jsfResponse = faces.ajax.response;
+    rf.ajaxContainer.facesResponse = faces.ajax.response;
 
     rf.ajaxContainer.isIgnoreResponse = function() {
         return rf.queue.isIgnoreResponse();
@@ -263,10 +263,10 @@
                 }
             });
 
-        // TODO: add this two variables to richfaces and report bug to jsf about constants
-        var JSF_EVENT_TYPE = 'event';
-        var JSF_EVENT_SUCCESS = 'success';
-        var JSF_EVENT_COMPLETE = 'complete';
+        // TODO: add this two variables to richfaces and report bug to faces about constants
+        var FACES_EVENT_TYPE = 'event';
+        var FACES_EVENT_SUCCESS = 'success';
+        var FACES_EVENT_COMPLETE = 'complete';
 
         var items = [];
         var lastRequestedEntry;
@@ -304,7 +304,7 @@
         }
 
         var onComplete = function (data) {
-            if (data.type == JSF_EVENT_TYPE && data.status == JSF_EVENT_SUCCESS) { // or JSF_EVENT_COMPLETE will be rather
+            if (data.type == FACES_EVENT_TYPE && data.status == FACES_EVENT_SUCCESS) { // or FACES_EVENT_COMPLETE will be rather
                 rf.log.debug("richfaces.queue: ajax submit successfull");
                 lastRequestedEntry = null;
                 removeStaleEntriesFromQueue();
@@ -331,7 +331,7 @@
                     rf.log.debug("richfaces.queue: will submit request NOW");
                     var o = lastRequestedEntry.options;
                     o["AJAX:EVENTS_COUNT"] = lastRequestedEntry.eventsCount;
-                    rf.ajaxContainer.jsfRequest(lastRequestedEntry.source, lastRequestedEntry.event, o);
+                    rf.ajaxContainer.facesRequest(lastRequestedEntry.source, lastRequestedEntry.event, o);
 
                     // call event handlers
                     if (o.queueonsubmit) {
@@ -477,7 +477,7 @@
                     lastRequestedEntry = null;
                     submitFirstEntry();
                 } else {
-                    rf.ajaxContainer.jsfResponse(request, context);
+                    rf.ajaxContainer.facesResponse(request, context);
                 }
             },
 
