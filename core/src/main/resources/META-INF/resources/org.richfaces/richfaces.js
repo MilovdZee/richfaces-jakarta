@@ -64,10 +64,10 @@ RichFaces.jQuery = RichFaces.jQuery || window.jQuery;
         var element;
         if (source == null) {
             element = null;
-        } else if (type == "string") {
+        } else if (type === "string") {
             // id
             element = document.getElementById(source);
-        } else if (type == "object") {
+        } else if (type === "object") {
             if (source.nodeType) {
                 // DOM element
                 element = source;
