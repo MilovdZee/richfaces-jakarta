@@ -1,1 +1,1 @@
-/* dependency of org.ajax4faces.component.LoadResourceComponentTest */
+/* dependency of org.ajax4jsf.component.LoadResourceComponentTest */
