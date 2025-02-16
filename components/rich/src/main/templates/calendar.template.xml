@@ -51,8 +51,7 @@
 							tabindex="#{component.attributes['tabindex']}"
 							readonly="#{(!component.attributes['enableManualInput'] || component.attributes['readonly']) ? 'readonly' : ''}"
 							cdk:passThrough="title">
-							<cdk:call
-								expression="renderInputHandlers(facesContext, component);" />
+							<cdk:call expression="renderInputHandlers(facesContext, component);" />
 						</input>
 						<c:choose>
 							<c:when
@@ -133,13 +132,14 @@
 						<cdk:scriptOption name="styleClass"
 							value="#{component.attributes['popupClass']}" />
 					</cdk:scriptObject>
-					RichFaces.ui.Calendar.addLocale("#{getAsLocale(facesContext,
-					component).toString()}",
-					#{toScriptArgs(getLocaleOptions(facesContext, component))});
-					new RichFaces.ui.Calendar("#{clientId}",
-					"#{getAsLocale(facesContext, component).toString()}",
-					#{toScriptArgs(options)}).load(#{writePreloadBody(facesContext,
-					component)}); </script>
+					RichFaces.ui.Calendar.addLocale(
+							"#{getAsLocale(facesContext, component).toString()}",
+							#{toScriptArgs(getLocaleOptions(facesContext, component))});
+					new RichFaces.ui.Calendar(
+							"#{clientId}",
+							"#{getAsLocale(facesContext, component).toString()}",
+							#{toScriptArgs(options)}).load(#{writePreloadBody(facesContext,	component)});
+				</script>
 			</span>
 		</div>
 	</cc:implementation>

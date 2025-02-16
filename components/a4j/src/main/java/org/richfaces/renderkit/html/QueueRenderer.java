@@ -38,7 +38,7 @@ public class QueueRenderer extends QueueRendererBase {
     protected String getQueueName(FacesContext context, UIComponent comp) {
         String nameAttributeValue = (String) comp.getAttributes().get(NAME_ATTRIBBUTE);
 
-        if (nameAttributeValue == null || nameAttributeValue.length() == 0) {
+        if (nameAttributeValue == null || nameAttributeValue.isEmpty()) {
             UIComponent form = utils.getNestingForm(comp);
             if (form != null) {
                 nameAttributeValue = form.getClientId(context);

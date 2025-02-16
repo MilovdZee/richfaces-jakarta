@@ -21,8 +21,6 @@
  */
 package org.richfaces.webapp;
 
-import java.io.IOException;
-
 import jakarta.faces.webapp.FacesServlet;
 import jakarta.servlet.Servlet;
 import jakarta.servlet.ServletConfig;
@@ -31,11 +29,11 @@ import jakarta.servlet.ServletRequest;
 import jakarta.servlet.ServletResponse;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-
-import org.apache.myfaces.webapp.DelegatedFacesServlet;
 import org.richfaces.log.Logger;
 import org.richfaces.log.RichfacesLogger;
 import org.richfaces.resource.ResourceHandlerImpl;
+
+import java.io.IOException;
 
 /**
  * <p>
@@ -54,7 +52,7 @@ import org.richfaces.resource.ResourceHandlerImpl;
  * For security reasons, the servlet handles just requests for JSF resources (context path starting with /jakarta.faces.resource/).
  * </p>
  */
-public class ResourceServlet implements Servlet, DelegatedFacesServlet {
+public class ResourceServlet implements Servlet {
 
     private static final Logger LOGGER = RichfacesLogger.RESOURCE.getLogger();
 
